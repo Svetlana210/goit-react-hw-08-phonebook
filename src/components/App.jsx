@@ -1,56 +1,26 @@
-import { useEffect } from 'react';
+import { lazy, Suspense } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-import styles from './app.module.css';
-import Form from './Form/Form';
-import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
+// import ContactsPage from 'pages/ContactsPage';
+import Navbar from './Navbar/Navbar';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { setFilter } from '../redux/filter/filter-slice';
-
-import { getFilteredContacts } from '../redux/contacts/contacts-selectors';
-import { getFilter } from 'redux/filter/filter-selectors';
-import {
-  fetchAllContacts,
-  fetchAddContact,
-  fetchDeleteContact,
-} from '../redux/contacts/contacts-operations';
+const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 
 const App = () => {
-  const filteredContacts = useSelector(getFilteredContacts);
-
-  const filter = useSelector(getFilter);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAllContacts());
-  }, [dispatch]);
-
-  const onAddContact = ({ name, number }) => {
-    dispatch(fetchAddContact({ name, number }));
-  };
-
-  const handleChangeFilter = e => {
-    const { value } = e.currentTarget;
-    dispatch(setFilter(value));
-  };
-
-  const onDeleteContact = id => {
-    const action = fetchDeleteContact(id);
-    dispatch(action);
-  };
-
   return (
-    <div className={styles.container}>
-      <h1>Phonebook</h1>
-      <Form onSubmit={onAddContact} />
-      <h2>Contacts</h2>
-      <Filter onChange={handleChangeFilter} filter={filter} />
-      <ContactList
-        contacts={filteredContacts}
-        deleteContact={onDeleteContact}
-      />
-    </div>
+    <>
+      <Navbar />
+      <Suspense>
+        <Routes>
+          <Route path="/" element={<Navigate to="/register" />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </Suspense>
+    </>
   );
 };
 
