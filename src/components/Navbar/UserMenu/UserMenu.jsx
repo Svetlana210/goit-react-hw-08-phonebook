@@ -1,12 +1,21 @@
 // import styles from './user-menu.module.css';
-// import { useSelector } from 'react-redux';
-// import { isUser } from 'redux/auth/auth-selectors';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../../redux/auth/auth-operations';
+import { getUser } from '../../../redux/auth/auth-selectors';
 const UserMenu = () => {
-  // const name = useSelector(isUser);
+  const { name } = useSelector(getUser);
+  const dispatch = useDispatch();
+
+  const onLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <div>
-      <p></p>
-      <button type="submit">Log out</button>
+      <p>{name}</p>
+      <button type="submit" onClick={onLogout}>
+        Log out
+      </button>
     </div>
   );
 };

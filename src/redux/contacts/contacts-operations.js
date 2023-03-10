@@ -2,7 +2,7 @@ import {
   getAllContacts,
   addContact,
   deleteContact,
-} from '../../services/contacts';
+} from '../../shared/services/contacts.js';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchAllContacts = createAsyncThunk(

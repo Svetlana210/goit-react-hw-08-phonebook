@@ -1,12 +1,13 @@
 import { lazy, Suspense } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-
-// import ContactsPage from 'pages/ContactsPage';
+import { Route, Routes } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Navbar from './Navbar/Navbar';
 
 const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 const App = () => {
   return (
@@ -14,10 +15,13 @@ const App = () => {
       <Navbar />
       <Suspense>
         <Routes>
-          <Route path="/" element={<Navigate to="/register" />} />
-          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/contacts" element={<ContactsPage />} />
+          </Route>
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
     </>

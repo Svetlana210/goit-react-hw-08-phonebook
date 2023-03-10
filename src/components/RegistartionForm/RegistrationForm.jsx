@@ -1,68 +1,26 @@
 import styles from './registration-form.module.css';
-import { useState } from 'react';
+import initialState from './initialState';
+import fields from './fields';
+import Button from '../../shared/component/Button/Button';
+import TextField from '../../shared/component/TextField/TextField';
+import useForm from '../../shared/hooks/useForm';
 
-const initialState = {
-  name: '',
-  email: '',
-  password: '',
-};
 const RegistrationForm = ({ onSubmit }) => {
-  const [state, setstate] = useState(initialState);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    onSubmit(state);
-    setstate(initialState);
-  };
-
-  const handleChange = e => {
-    const { name, value } = e.currentTarget;
-    setstate(prevState => {
-      return {
-        ...prevState,
-        [name]: value,
-      };
-    });
-  };
-
+  const { state, handleChange, handleSubmit } = useForm({
+    initialState,
+    onSubmit,
+  });
+  const { name, email, password } = state;
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <label className={styles.label}>
-        <span className={styles.span}>Name</span>
-        <input
-          type="text"
-          name="name"
-          value={state.name}
-          required
-          placeholder="user name"
-          onChange={handleChange}
-        />
-      </label>
-      <label className={styles.label}>
-        <span className={styles.span}>Email</span>
-        <input
-          type="email"
-          name="email"
-          value={state.email}
-          required
-          placeholder="user email"
-          onChange={handleChange}
-        />
-      </label>
-      <label className={styles.label}>
-        <span className={styles.span}>Password</span>
-        <input
-          type="password"
-          name="password"
-          value={state.password}
-          required
-          placeholder="user password"
-          onChange={handleChange}
-        />
-      </label>
-      <button className={styles.btn} type="submit">
-        Sign up
-      </button>
+      <TextField value={name} onChange={handleChange} {...fields.name} />
+      <TextField value={email} onChange={handleChange} {...fields.email} />
+      <TextField
+        value={password}
+        onChange={handleChange}
+        {...fields.password}
+      />
+      <Button>Sign up</Button>
     </form>
   );
 };
