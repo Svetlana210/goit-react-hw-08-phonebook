@@ -1,12 +1,24 @@
-.wrapper {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
 .field {
-  padding: 10px;
-  border: 1px solid;
+  margin-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  border: 1px solid rgb(226, 232, 240);
   border-radius: 5px;
+}
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: rgb(213, 215, 218);
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: rgb(213, 215, 218);
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: rgb(213, 215, 218);
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: rgb(213, 215, 218);
 }

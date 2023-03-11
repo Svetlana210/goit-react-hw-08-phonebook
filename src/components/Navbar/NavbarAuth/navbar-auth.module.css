@@ -1,17 +1,57 @@
 .nav {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 60px;
-  box-shadow: 0px -4px 12px 0px rgb(158, 160, 164);
+  /* margin: 0 auto; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .link {
-  margin-right: 40px;
+  /* border: 1px solid rgb(159, 215, 204, 0.5); */
+  padding: 8px;
+  margin-left: 40px;
+  border-radius: 7px;
+  /* margin: 0 50px; */
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 20px;
-  color: black;
+  color: #303130;
+  transition: background-color 250ms linear;
 }
-.link.active {
-  color: rgb(151, 19, 19);
-  font-weight: 700;
+.link:hover {
+  background-color: rgb(32, 169, 169);
+}
+/* .link.active {
+  background-color: rgb(32, 169, 169);
+ 
+} */
+
+.link:global(.active) {
+  background-color: rgb(32, 169, 169);
+}
+.linkHome {
+  position: relative;
+  /* border: 1px solid rgb(159, 215, 204, 0.5); */
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 8px;
+  padding-left: 32px;
+
+  border-radius: 7px;
+  /* margin: 0 50px; */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+  color: #303130;
+  transition: background-color 250ms linear;
+}
+.linkHome:hover {
+  background-color: rgb(32, 169, 169);
+}
+.linkHome:global(.active) {
+  background-color: rgb(32, 169, 169);
+}
+.icon {
+  position: absolute;
+  right: 66px;
+  top: 7px;
+  color: #303130;
 }

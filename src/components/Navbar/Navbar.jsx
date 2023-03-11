@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <header>
+      <header className={styles.header}>
         <nav className={styles.nav}>
           {!isLogin && <NavbarAuth />}
           {isLogin && <UserMenu />}

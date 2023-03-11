@@ -1,18 +1,25 @@
 import { NavLink } from 'react-router-dom';
 import styles from './navbar-auth.module.css';
+import { Home } from '@mui/icons-material';
 
 const NavbarAuth = () => {
-  const getFullName = ({ isActive }) => {
-    return isActive ? `${styles.link} ${styles.active}` : styles.link;
-  };
+  // const getFullName = ({ isActive }) => {
+  //   return isActive ? `${styles.link} ${styles.active}` : styles.link;
+  // };
   return (
-    <div>
-      <NavLink to="/register" className={getFullName}>
-        Register
+    <div className={styles.nav}>
+      <NavLink to="/home" className={styles.linkHome}>
+        <Home className={styles.icon} />
+        Home
       </NavLink>
-      <NavLink to="/login" className={getFullName}>
-        Login
-      </NavLink>
+      <div>
+        <NavLink to="/register" className={styles.link}>
+          Sign Up
+        </NavLink>
+        <NavLink to="/login" className={styles.link}>
+          Log In
+        </NavLink>
+      </div>
     </div>
   );
 };

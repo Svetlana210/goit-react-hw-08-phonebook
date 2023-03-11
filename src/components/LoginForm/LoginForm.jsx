@@ -4,6 +4,9 @@ import initialState from './initialState';
 import useForm from '../../shared/hooks/useForm';
 import Button from '../../shared/component/Button/Button';
 import TextField from '../../shared/component/TextField/TextField';
+import usePassword from '../../shared/hooks/usePassword';
+import { FaLock } from 'react-icons/fa';
+import { AiTwotoneMail } from 'react-icons/ai';
 
 const LoginForm = ({ onSubmit }) => {
   const { state, handleChange, handleSubmit } = useForm({
@@ -11,17 +14,26 @@ const LoginForm = ({ onSubmit }) => {
     onSubmit,
   });
   const { email, password } = state;
+  const { showPassword, handleShowClick } = usePassword();
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <TextField value={email} onChange={handleChange} {...fields.email} />
-      <TextField
-        value={password}
-        onChange={handleChange}
-        {...fields.password}
-      />
-      <Button>Log in</Button>
-    </form>
+    <div className={styles.wrap}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <AiTwotoneMail className={styles.iconMail} />
+        <TextField value={email} onChange={handleChange} {...fields.email} />
+        <FaLock className={styles.iconPass} />
+        <TextField
+          value={password}
+          onChange={handleChange}
+          {...fields.password}
+          type={showPassword ? 'text' : 'password'}
+        />
+        <Button>Log in</Button>
+      </form>
+      <button onClick={handleShowClick} className={styles.btn}>
+        {showPassword ? 'hide' : 'show'}
+      </button>
+    </div>
   );
 };
 
