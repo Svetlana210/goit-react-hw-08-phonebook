@@ -8,7 +8,7 @@ const NavbarAuth = () => {
   // };
   return (
     <div className={styles.nav}>
-      <NavLink to="/home" className={styles.linkHome}>
+      <NavLink to="/" className={styles.linkHome}>
         <Home className={styles.icon} />
         Home
       </NavLink>

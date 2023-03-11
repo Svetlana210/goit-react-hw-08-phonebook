@@ -11,7 +11,7 @@ const LoginPage = () => {
 
   return (
     <div className={styles.wrap}>
-      <h1 className={styles.title}>LoginPage</h1>
+      <h1 className={styles.title}>Log In</h1>
       <LoginForm onSubmit={handleLogin} />
     </div>
   );

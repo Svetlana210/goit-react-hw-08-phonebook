@@ -5,6 +5,7 @@ import Button from '../../shared/component/Button/Button';
 import TextField from '../../shared/component/TextField/TextField';
 import useForm from '../../shared/hooks/useForm';
 import usePassword from '../../shared/hooks/usePassword';
+import { Link } from 'react-router-dom';
 import { FaUserAlt, FaLock } from 'react-icons/fa';
 import { AiTwotoneMail } from 'react-icons/ai';
 
@@ -39,6 +40,12 @@ const RegistrationForm = ({ onSubmit }) => {
       <button onClick={handleShowClick} className={styles.btn}>
         {showPassword ? 'hide' : 'show'}
       </button>
+      <p className={styles.text}>
+        Already have an account?{' '}
+        <Link className={styles.link} to="/login">
+          Login
+        </Link>
+      </p>
     </div>
   );
 };

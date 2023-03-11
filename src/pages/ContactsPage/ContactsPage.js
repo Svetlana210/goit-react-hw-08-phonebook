@@ -42,7 +42,6 @@ const ContactsPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Phonebook</h1>
       <Form onSubmit={onAddContact} />
       <h2>Contacts</h2>
       <Filter onChange={handleChangeFilter} filter={filter} />
