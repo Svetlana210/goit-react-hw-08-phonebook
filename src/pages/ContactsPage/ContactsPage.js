@@ -43,12 +43,15 @@ const ContactsPage = () => {
   return (
     <div className={styles.container}>
       <Form onSubmit={onAddContact} />
-      <h2>Contacts</h2>
-      <Filter onChange={handleChangeFilter} filter={filter} />
-      <ContactList
-        contacts={filteredContacts}
-        deleteContact={onDeleteContact}
-      />
+
+      <div className={styles.wrap}>
+        <h2 className={styles.title}>Contacts</h2>
+        <Filter onChange={handleChangeFilter} filter={filter} />
+        <ContactList
+          contacts={filteredContacts}
+          deleteContact={onDeleteContact}
+        />
+      </div>
     </div>
   );
 };

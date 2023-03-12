@@ -1,6 +1,5 @@
 import styles from './form.module.css';
 import { useState } from 'react';
-import Button from 'shared/component/Button/Button';
 
 const Form = ({ onSubmit }) => {
   const [state, setState] = useState({ name: '', number: '' });
@@ -26,6 +25,7 @@ const Form = ({ onSubmit }) => {
       <label className={styles.label}>
         <span className={styles.span}>Name</span>
         <input
+          className={styles.input}
           type="text"
           name="name"
           value={state.name}
@@ -36,8 +36,9 @@ const Form = ({ onSubmit }) => {
         />
       </label>
       <label className={styles.label}>
-        <span className={styles.span}>Tel</span>
+        <span className={styles.span}>Number</span>
         <input
+          className={styles.inputLast}
           type="tel"
           name="number"
           value={state.number}
@@ -47,9 +48,9 @@ const Form = ({ onSubmit }) => {
           onChange={handleChange}
         />
       </label>
-      <Button className={styles.btn} type="submit">
+      <button className={styles.btn} type="submit">
         Add contact
-      </Button>
+      </button>
     </form>
   );
 };

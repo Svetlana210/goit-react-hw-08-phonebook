@@ -1,13 +1,16 @@
 import styles from './contact-list.module.css';
 import propTypes from 'prop-types';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 const ContactList = ({ contacts, deleteContact }) => {
   const elements = contacts.map(contact => (
     <li key={contact.id} id={contact.id} className={styles.item}>
-      <span className={styles.span}>{contact.name}:</span>
-      <span>{contact.number}</span>
+      <span>
+        <span className={styles.name}>{contact.name}</span>
+        <span>{contact.number}</span>
+      </span>
       <button className={styles.btn} onClick={() => deleteContact(contact.id)}>
-        Delete
+        <DeleteOutlineIcon fontSize="medium" />
       </button>
     </li>
   ));
@@ -16,7 +19,7 @@ const ContactList = ({ contacts, deleteContact }) => {
       {contacts.length > 0 ? (
         <ul className={styles.list}>{elements} </ul>
       ) : (
-        <h2>
+        <h2 className={styles.text}>
           Add some contacts <br /> Your phonebook is empty
         </h2>
       )}

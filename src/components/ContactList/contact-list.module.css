@@ -1,22 +1,35 @@
 .list {
   font-size: 20px;
+  margin-top: 15px;
+  padding: 0;
 }
 .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 5px;
 }
-.span {
-  margin-right: 10px;
+.name {
+  font-weight: 500;
+  margin-right: 20px;
 }
 .btn {
-  width: 90px;
-  margin-top: 15px;
-  margin-left: 20px;
+  /* width: 90px; */
+  /* margin-top: 15px; */
+  /* margin-left: 0 auto; */
+
   padding: 5px;
-  background-color: white;
+
+  background-color: transparent;
   border-radius: 2px;
-  border: 1px solid gray;
+  border: none;
   cursor: pointer;
+  color: rgb(180, 18, 18);
+  transition: background-color 250ms linear;
 }
 .btn:hover {
-  background-color: rgb(190, 193, 193);
+  background-color: rgba(221, 12, 12, 0.173);
+}
+.text {
+  text-align: center;
 }
